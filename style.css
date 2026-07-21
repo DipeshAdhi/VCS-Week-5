@@ -1,6 +1,13 @@
-.{
+.mpage {
     margin: 10px;
-    
+    padding: 10px;
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
 
-
+#mpage {
+    margin: 10px;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
 }
