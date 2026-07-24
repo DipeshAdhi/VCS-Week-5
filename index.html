@@ -3,12 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Git Merge</title>
+    <title>Git Merge - Project Home</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Git Merge</h1>
-    <h2>What is Git Merge?</h2>
-    <p>Git merge is a command used to integrate changes from one branch into another. It allows developers to combine the work done in different branches, creating a unified history of changes. When you perform a merge, Git takes the contents of the source branch and integrates it with the target branch
-    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🔀 Git Merge</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="mpage">
+        <header class="page-header">
+            <h1>Welcome to the Git Merge Project</h1>
+            <p class="subtitle">Master the art of combining branches in Git</p>
+        </header>
+
+        <section class="content-section">
+            <p class="intro-text">
+                This project is designed to help developers understand the concept of Git merge and how to
+                effectively use it in their version control workflow. Git merge is a powerful tool that allows you to combine changes from different branches, ensuring that your codebase remains consistent and up-to-date.
+            </p>
+        </section>
+
+        <!-- Key Features Section -->
+        <section class="features-section">
+            <h2>🎯 Key Features</h2>
+            <ul class="features-list">
+                <li class="feature-item">
+                    <span class="feature-icon">🔗</span>
+                    <strong>Integrate changes</strong> from one branch to another seamlessly
+                </li>
+                <li class="feature-item">
+                    <span class="feature-icon">⚠️</span>
+                    <strong>Resolve conflicts</strong> that may arise during the merge process
+                </li>
+                <li class="feature-item">
+                    <span class="feature-icon">📊</span>
+                    <strong>Maintain history</strong> with a clean and organized commit history
+                </li>
+            </ul>
+        </section>
+
+        <!-- Interactive Demo Section -->
+        <section class="demo-section">
+            <h2>🚀 Quick Start Demo</h2>
+            <div class="demo-box">
+                <p>Click the button below to simulate a Git merge operation:</p>
+                <button id="mergeBtn" class="btn btn-primary">Simulate Merge</button>
+                <div id="mergeResult" class="merge-result hidden">
+                    <p id="resultText"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Git Commands Section -->
+        <section class="commands-section">
+            <h2>📝 Common Git Merge Commands</h2>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <code>git merge branch-name</code>
+                    <p>Merge a branch into the current branch</p>
+                </div>
+                <div class="command-card">
+                    <code>git merge --no-ff branch-name</code>
+                    <p>Merge with a merge commit (preserves history)</p>
+                </div>
+                <div class="command-card">
+                    <code>git merge --squash branch-name</code>
+                    <p>Squash commits before merging</p>
+                </div>
+                <div class="command-card">
+                    <code>git merge --abort</code>
+                    <p>Cancel an ongoing merge process</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips Section -->
+        <section class="tips-section">
+            <h2>💡 Merge Tips</h2>
+            <div class="tips-container">
+                <div class="tip">
+                    <h3>Before Merging</h3>
+                    <p>Always ensure your working directory is clean and you're on the correct branch</p>
+                </div>
+                <div class="tip">
+                    <h3>Conflict Resolution</h3>
+                    <p>Read conflict markers carefully and test thoroughly before committing</p>
+                </div>
+                <div class="tip">
+                    <h3>Commit Messages</h3>
+                    <p>Write clear, descriptive commit messages for merge operations</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Git Merge Project. All rights reserved.</p>
+        <p>Built to help developers master version control</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
