@@ -3,27 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>About - Git Merge Project</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🔀 Git Merge</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
     </nav>
-    <Project Name: Git Merge </Project Name>
-    <h1>Welcome to the Git Merge Project</h1>
-    <p>This project is designed to help developers understand the concept of Git merge and how to
-    effectively use it in their version control workflow. Git merge is a powerful tool that allows you to combine changes from different branches, ensuring that your codebase remains consistent and up-to-date.</p>       
 
-    <h2>Key Features</h2>   
-    <ul>
-        <li>Integrate changes from one branch to another</li>
-        <li>Resolve conflicts that may arise during the merge process</li>
-        <li>Maintain a clean and organized commit history</li>
-    </ul>
-    
+    <main class="mpage">
+        <header class="page-header">
+            <h1>About Git Merge</h1>
+            <p class="subtitle">Understanding version control collaboration</p>
+        </header>
+
+        <section class="content-section">
+            <h2>What is Git Merge?</h2>
+            <p>
+                Git merge is a fundamental operation in version control that combines changes from different branches into a single branch. It's essential for collaborative development, allowing multiple developers to work on features independently and then integrate their changes seamlessly.
+            </p>
+        </section>
+
+        <section class="features-section">
+            <h2>Why Learn Git Merge?</h2>
+            <ul class="features-list">
+                <li class="feature-item">
+                    <span class="feature-icon">👥</span>
+                    <strong>Team Collaboration:</strong> Enables multiple developers to work together efficiently
+                </li>
+                <li class="feature-item">
+                    <span class="feature-icon">🎯</span>
+                    <strong>Feature Development:</strong> Create isolated branches for new features
+                </li>
+                <li class="feature-item">
+                    <span class="feature-icon">🛡️</span>
+                    <strong>Code Quality:</strong> Review and test changes before integration
+                </li>
+                <li class="feature-item">
+                    <span class="feature-icon">📚</span>
+                    <strong>History Management:</strong> Maintain a clean and understandable commit history
+                </li>
+            </ul>
+        </section>
+
+        <section class="tips-section">
+            <h2>Merge Strategies</h2>
+            <div class="tips-container">
+                <div class="tip">
+                    <h3>Fast-Forward Merge</h3>
+                    <p>Moves the main branch pointer forward to the feature branch tip when there are no diverging commits.</p>
+                </div>
+                <div class="tip">
+                    <h3>3-Way Merge</h3>
+                    <p>Creates a new commit that combines changes from both branches, useful when branches have diverged.</p>
+                </div>
+                <div class="tip">
+                    <h3>Squash Merge</h3>
+                    <p>Combines all commits from a branch into a single commit before merging, keeping history clean.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="commands-section">
+            <h2>📚 Learning Resources</h2>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <code>git branch</code>
+                    <p>List all branches in your repository</p>
+                </div>
+                <div class="command-card">
+                    <code>git checkout -b new-feature</code>
+                    <p>Create and switch to a new branch</p>
+                </div>
+                <div class="command-card">
+                    <code>git log --graph</code>
+                    <p>Visualize branch history as a graph</p>
+                </div>
+                <div class="command-card">
+                    <code>git diff branch1 branch2</code>
+                    <p>Compare changes between two branches</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Git Merge Project. All rights reserved.</p>
+        <p>Learn Git. Master Collaboration. Build Better Software.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
