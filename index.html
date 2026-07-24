@@ -3,116 +3,640 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Git Merge - Project Home</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Creative Innovation Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.5)"/><circle cx="80" cy="80" r="2" fill="rgba(255,255,255,0.3)"/><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.4)"/></svg>');
+            pointer-events: none;
+            z-index: 1;
+            animation: drift 20s infinite;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, 50px); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 12, 41, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 3rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        main {
+            position: relative;
+            z-index: 2;
+            margin-top: 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.2), transparent);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 4s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            animation: slideUp 0.8s ease;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.3)); }
+            50% { filter: drop-shadow(0 0 20px rgba(118, 75, 162, 0.5)); }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #b8c6db;
+            margin-bottom: 2rem;
+            animation: slideUp 0.8s ease 0.2s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideUp 0.8s ease 0.4s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), transparent);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+            top: -30%;
+            right: -30%;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .feature-card p {
+            color: #b8c6db;
+            line-height: 1.6;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 6rem 3rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #b8c6db;
+            font-size: 1.1rem;
+        }
+
+        /* Interactive Section */
+        .interactive {
+            padding: 6rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .interactive-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .interactive-text p {
+            color: #b8c6db;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .toggle-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .toggle-btn {
+            padding: 0.75rem 1.5rem;
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid rgba(102, 126, 234, 0.5);
+            color: #fff;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .toggle-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-color: transparent;
+        }
+
+        .toggle-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .display-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #b8c6db;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 12, 41, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 6rem;
+        }
+
+        footer p {
+            color: #b8c6db;
+            margin: 0.5rem 0;
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .interactive-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">🔀 Git Merge</div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+    <div class="bg-animation"></div>
+
+    <!-- Navigation (Modify this in each page) -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo"><a href="index.html">✨ Git HUB</a></div>
+            <ul>
+                 <a href="home.html" class="hover:text-blue-400 transition">Home</a>
+                <a href="about.html" class="hover:text-blue-400 transition">About</a>
+                <a href="contact.html" class="text-blue-400 border-b-2 border-blue-400">Contact</a>
+
             </ul>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="mpage">
-        <header class="page-header">
-            <h1>Welcome to the Git Merge Project</h1>
-            <p class="subtitle">Master the art of combining branches in Git</p>
-        </header>
 
-        <section class="content-section">
-            <p class="intro-text">
-                This project is designed to help developers understand the concept of Git merge and how to
-                effectively use it in their version control workflow. Git merge is a powerful tool that allows you to combine changes from different branches, ensuring that your codebase remains consistent and up-to-date.
-            </p>
-        </section>
-
-        <!-- Key Features Section -->
-        <section class="features-section">
-            <h2>🎯 Key Features</h2>
-            <ul class="features-list">
-                <li class="feature-item">
-                    <span class="feature-icon">🔗</span>
-                    <strong>Integrate changes</strong> from one branch to another seamlessly
-                </li>
-                <li class="feature-item">
-                    <span class="feature-icon">⚠️</span>
-                    <strong>Resolve conflicts</strong> that may arise during the merge process
-                </li>
-                <li class="feature-item">
-                    <span class="feature-icon">📊</span>
-                    <strong>Maintain history</strong> with a clean and organized commit history
-                </li>
-            </ul>
-        </section>
-
-        <!-- Interactive Demo Section -->
-        <section class="demo-section">
-            <h2>🚀 Quick Start Demo</h2>
-            <div class="demo-box">
-                <p>Click the button below to simulate a Git merge operation:</p>
-                <button id="mergeBtn" class="btn btn-primary">Simulate Merge</button>
-                <div id="mergeResult" class="merge-result hidden">
-                    <p id="resultText"></p>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Innovation Unleashed</h1>
+                <p>Transform Ideas Into Reality With Cutting-Edge Technology</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary">Get Started</button>
+                    <button class="btn btn-secondary">Learn More</button>
                 </div>
             </div>
         </section>
 
-        <!-- Git Commands Section -->
-        <section class="commands-section">
-            <h2>📝 Common Git Merge Commands</h2>
-            <div class="commands-grid">
-                <div class="command-card">
-                    <code>git merge branch-name</code>
-                    <p>Merge a branch into the current branch</p>
+        <!-- Features Section -->
+        <section class="features">
+            <h2 class="section-title">Why Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Experience blazing-fast performance with our optimized infrastructure</p>
                 </div>
-                <div class="command-card">
-                    <code>git merge --no-ff branch-name</code>
-                    <p>Merge with a merge commit (preserves history)</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Secure & Safe</h3>
+                    <p>Enterprise-level security to keep your data protected always</p>
                 </div>
-                <div class="command-card">
-                    <code>git merge --squash branch-name</code>
-                    <p>Squash commits before merging</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Scalable</h3>
+                    <p>Grow without limits with our scalable cloud infrastructure</p>
                 </div>
-                <div class="command-card">
-                    <code>git merge --abort</code>
-                    <p>Cancel an ongoing merge process</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Precise Analytics</h3>
+                    <p>Data-driven insights to power your decision making</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>24/7 Support</h3>
+                    <p>Expert support team ready to assist you anytime</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Easy Integration</h3>
+                    <p>Seamlessly integrate with your existing tools and workflows</p>
                 </div>
             </div>
         </section>
 
-        <!-- Tips Section -->
-        <section class="tips-section">
-            <h2>💡 Merge Tips</h2>
-            <div class="tips-container">
-                <div class="tip">
-                    <h3>Before Merging</h3>
-                    <p>Always ensure your working directory is clean and you're on the correct branch</p>
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="stat">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Active Users</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">99.9%</div>
+                <div class="stat-label">Uptime</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Countries</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">$2B+</div>
+                <div class="stat-label">Value Created</div>
+            </div>
+        </section>
+
+        <!-- Interactive Section -->
+        <section class="interactive" id="about">
+            <h2 class="section-title">Interactive Experience</h2>
+            <div class="interactive-grid">
+                <div class="interactive-text">
+                    <h2>Choose Your Path</h2>
+                    <p>Select from our premium features and customize your experience exactly how you need it.</p>
+                    <p>Each option is designed with performance and user satisfaction in mind.</p>
+                    <div class="toggle-buttons">
+                        <button class="toggle-btn active" data-feature="premium">Premium</button>
+                        <button class="toggle-btn" data-feature="enterprise">Enterprise</button>
+                        <button class="toggle-btn" data-feature="custom">Custom</button>
+                    </div>
                 </div>
-                <div class="tip">
-                    <h3>Conflict Resolution</h3>
-                    <p>Read conflict markers carefully and test thoroughly before committing</p>
-                </div>
-                <div class="tip">
-                    <h3>Commit Messages</h3>
-                    <p>Write clear, descriptive commit messages for merge operations</p>
+                <div class="display-box" id="featureDisplay">
+                    <div>
+                        <h3 style="margin-bottom: 1rem;">Premium Plan</h3>
+                        <p>✅ Unlimited Projects</p>
+                        <p>✅ Advanced Analytics</p>
+                        <p>✅ Priority Support</p>
+                        <p>✅ Custom Branding</p>
+                        <p style="margin-top: 1.5rem; font-size: 2rem; color: #667eea;">$99/month</p>
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section style="padding: 6rem 3rem; text-align: center; max-width: 1400px; margin: 0 auto;">
+            <h2 class="section-title" style="margin-bottom: 2rem;">Ready to Transform?</h2>
+            <p style="color: #b8c6db; font-size: 1.2rem; margin-bottom: 2rem;">Join thousands of innovators building the future today</p>
+            <button class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 3rem;">Start Your Journey</button>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2024 Git Merge Project. All rights reserved.</p>
-        <p>Built to help developers master version control</p>
+    <footer id="contact">
+        <p>&copy; 2024 Innovation Hub. All rights reserved.</p>
+        <p>Crafted with ✨ for creative minds</p>
+        <p>📧 hello@hub.dev | 🌐 www.hub.dev</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Interactive Feature Toggle
+        const toggleButtons = document.querySelectorAll('.toggle-btn');
+        const featureDisplay = document.getElementById('featureDisplay');
+
+        const features = {
+            premium: {
+                title: 'Premium Plan',
+                items: ['✅ Unlimited Projects', '✅ Advanced Analytics', '✅ Priority Support', '✅ Custom Branding'],
+                price: '$99/month'
+            },
+            enterprise: {
+                title: 'Enterprise Plan',
+                items: ['✅ Unlimited Everything', '✅ Dedicated Account Manager', '✅ 24/7 Phone Support', '✅ White-label Solution', '✅ API Access'],
+                price: 'Custom Pricing'
+            },
+            custom: {
+                title: 'Custom Solution',
+                items: ['✅ Tailored to Your Needs', '✅ Scalable Infrastructure', '✅ Expert Consultation', '✅ Full Integration Support'],
+                price: 'Let\'s Talk'
+            }
+        };
+
+        toggleButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                toggleButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const feature = features[btn.dataset.feature];
+                featureDisplay.innerHTML = `
+                    <div>
+                        <h3 style="margin-bottom: 1rem;">${feature.title}</h3>
+                        ${feature.items.map(item => `<p>${item}</p>`).join('')}
+                        <p style="margin-top: 1.5rem; font-size: 2rem; color: #667eea;">${feature.price}</p>
+                    </div>
+                `;
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target?.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Mouse hover effect on cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--x', `${x}px`);
+                card.style.setProperty('--y', `${y}px`);
+            });
+        });
+
+        console.log('🚀 Creative Hub Page Loaded!');
+        console.log('✨ Interactive features active');
+    </script>
 </body>
 </html>
