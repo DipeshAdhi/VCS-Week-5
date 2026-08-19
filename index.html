@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Innovation Hub</title>
+    <title>GitHub Learning Platform</title>
     <style>
         * {
             margin: 0;
@@ -70,6 +70,11 @@
             display: flex;
             list-style: none;
             gap: 2rem;
+            align-items: center;
+        }
+
+        nav ul li {
+            list-style: none;
         }
 
         nav a {
@@ -91,8 +96,15 @@
             transition: width 0.3s;
         }
 
-        nav a:hover::after {
+        nav a:hover::after,
+        nav a.active-link::after {
             width: 100%;
+        }
+
+        nav a.active-link {
+            color: #7dc3ff;
+            border-bottom: 2px solid #7dc3ff;
+            padding-bottom: 0.25rem;
         }
 
         /* Main Content */
@@ -154,11 +166,38 @@
             50% { filter: drop-shadow(0 0 20px rgba(118, 75, 162, 0.5)); }
         }
 
+        .hero-badge {
+            display: inline-block;
+            padding: 0.55rem 1rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            background: rgba(102, 126, 234, 0.18);
+            color: #dbe4ff;
+            border: 1px solid rgba(102, 126, 234, 0.45);
+            margin-bottom: 1.5rem;
+            animation: slideUp 0.8s ease 0.05s both;
+        }
+
         .hero p {
             font-size: 1.5rem;
             color: #b8c6db;
             margin-bottom: 2rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
             animation: slideUp 0.8s ease 0.2s both;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #c9d5ea;
+            max-width: 760px;
+            margin: 0 auto 2rem auto;
+            animation: slideUp 0.8s ease 0.25s both;
         }
 
         .cta-buttons {
@@ -276,6 +315,35 @@
         .feature-card p {
             color: #b8c6db;
             line-height: 1.6;
+        }
+
+        .module-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 0.8rem;
+            margin-bottom: 1rem;
+            border-radius: 999px;
+            background: rgba(118, 75, 162, 0.18);
+            color: #e8dcff;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .learning-list {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .learning-list div {
+            padding: 1rem 1.1rem;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #d8e0f1;
         }
 
         @keyframes float {
@@ -450,15 +518,14 @@
 <body>
     <div class="bg-animation"></div>
 
-    <!-- Navigation (Modify this in each page) -->
+    <!-- Navigation -->
     <nav>
         <div class="nav-content">
-            <div class="logo"><a href="index.html">✨ Git HUB</a></div>
+            <div class="logo"><a href="index.html">✨ GitHub Learning</a></div>
             <ul>
-                 <a href="home.html" class="hover:text-blue-400 transition">Home</a>
-                <a href="about.html" class="hover:text-blue-400 transition">About</a>
-                <a href="contact.html" class="text-blue-400 border-b-2 border-blue-400">Contact</a>
-
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active-link">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -468,48 +535,56 @@
         <!-- Hero Section -->
         <section class="hero" id="home">
             <div class="hero-content">
-                <h1>Innovation Unleashed</h1>
-                <p>Transform Ideas Into Reality With Cutting-Edge Technology</p>
+                <div class="hero-badge">GitHub • Learn by building</div>
+                <h1>Master GitHub Like a Pro</h1>
+                <p>Turn commits, branches, pull requests, and collaboration into practical skills through a presentation-style learning experience.</p>
+                <p class="hero-subtitle">This platform is designed to guide beginners and aspiring developers through real-world GitHub workflows with clarity, visual structure, and hands-on practice.</p>
                 <div class="cta-buttons">
-                    <button class="btn btn-primary">Get Started</button>
-                    <button class="btn btn-secondary">Learn More</button>
+                    <button class="btn btn-primary">Start Learning</button>
+                    <button class="btn btn-secondary">View Curriculum</button>
                 </div>
             </div>
         </section>
 
-        <!-- Features Section -->
+        <!-- Learning Modules -->
         <section class="features">
-            <h2 class="section-title">Why Choose Us</h2>
+            <h2 class="section-title">Learning Modules</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Lightning Fast</h3>
-                    <p>Experience blazing-fast performance with our optimized infrastructure</p>
+                    <div class="module-pill">Module 01</div>
+                    <div class="feature-icon">🌱</div>
+                    <h3>Git Basics</h3>
+                    <p>Learn repositories, commits, staging, branching, and the core Git workflow used every day in software teams.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Secure & Safe</h3>
-                    <p>Enterprise-level security to keep your data protected always</p>
+                    <div class="module-pill">Module 02</div>
+                    <div class="feature-icon">🤝</div>
+                    <h3>Collaboration</h3>
+                    <p>Understand pull requests, code reviews, issue tracking, and how teams coordinate confidently on GitHub.</p>
                 </div>
                 <div class="feature-card">
+                    <div class="module-pill">Module 03</div>
+                    <div class="feature-icon">🧪</div>
+                    <h3>CI/CD & Automation</h3>
+                    <p>Connect workflows, build pipelines, and automate quality checks for cleaner project delivery.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="module-pill">Module 04</div>
                     <div class="feature-icon">🚀</div>
-                    <h3>Scalable</h3>
-                    <p>Grow without limits with our scalable cloud infrastructure</p>
+                    <h3>Deploy & Showcase</h3>
+                    <p>Publish projects, manage releases, and present your work professionally with GitHub Pages and portfolio-ready flow.</p>
                 </div>
                 <div class="feature-card">
+                    <div class="module-pill">Module 05</div>
+                    <div class="feature-icon">📚</div>
+                    <h3>Portfolio Building</h3>
+                    <p>Create a strong developer profile with README writing, pinned repositories, and project storytelling.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="module-pill">Module 06</div>
                     <div class="feature-icon">🎯</div>
-                    <h3>Precise Analytics</h3>
-                    <p>Data-driven insights to power your decision making</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">👥</div>
-                    <h3>24/7 Support</h3>
-                    <p>Expert support team ready to assist you anytime</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔧</div>
-                    <h3>Easy Integration</h3>
-                    <p>Seamlessly integrate with your existing tools and workflows</p>
+                    <h3>Career Prep</h3>
+                    <p>Learn how recruiters evaluate GitHub activity and how to present your coding journey with confidence.</p>
                 </div>
             </div>
         </section>
@@ -517,45 +592,45 @@
         <!-- Stats Section -->
         <section class="stats">
             <div class="stat">
-                <div class="stat-number">50K+</div>
-                <div class="stat-label">Active Users</div>
+                <div class="stat-number">6</div>
+                <div class="stat-label">Learning Tracks</div>
             </div>
             <div class="stat">
-                <div class="stat-number">99.9%</div>
-                <div class="stat-label">Uptime</div>
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Practical Workflow</div>
             </div>
             <div class="stat">
-                <div class="stat-number">150+</div>
-                <div class="stat-label">Countries</div>
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Accessible Practice</div>
             </div>
             <div class="stat">
-                <div class="stat-number">$2B+</div>
-                <div class="stat-label">Value Created</div>
+                <div class="stat-number">1</div>
+                <div class="stat-label">Portfolio-Ready Goal</div>
             </div>
         </section>
 
         <!-- Interactive Section -->
         <section class="interactive" id="about">
-            <h2 class="section-title">Interactive Experience</h2>
+            <h2 class="section-title">Presentation Flow</h2>
             <div class="interactive-grid">
                 <div class="interactive-text">
-                    <h2>Choose Your Path</h2>
-                    <p>Select from our premium features and customize your experience exactly how you need it.</p>
-                    <p>Each option is designed with performance and user satisfaction in mind.</p>
+                    <h2>Choose Your Learning Stage</h2>
+                    <p>This section acts like a slide deck and helps learners move from beginner confidence to advanced GitHub usage.</p>
+                    <p>Each track focuses on one growth stage so the platform feels structured and easy to follow.</p>
                     <div class="toggle-buttons">
-                        <button class="toggle-btn active" data-feature="premium">Premium</button>
-                        <button class="toggle-btn" data-feature="enterprise">Enterprise</button>
-                        <button class="toggle-btn" data-feature="custom">Custom</button>
+                        <button class="toggle-btn active" data-feature="beginner">Beginner</button>
+                        <button class="toggle-btn" data-feature="collab">Collaboration</button>
+                        <button class="toggle-btn" data-feature="advanced">Advanced</button>
                     </div>
                 </div>
                 <div class="display-box" id="featureDisplay">
                     <div>
-                        <h3 style="margin-bottom: 1rem;">Premium Plan</h3>
-                        <p>✅ Unlimited Projects</p>
-                        <p>✅ Advanced Analytics</p>
-                        <p>✅ Priority Support</p>
-                        <p>✅ Custom Branding</p>
-                        <p style="margin-top: 1.5rem; font-size: 2rem; color: #667eea;">$99/month</p>
+                        <h3 style="margin-bottom: 1rem;">Beginner Track</h3>
+                        <p>✅ Git install and setup</p>
+                        <p>✅ Create your first repo</p>
+                        <p>✅ Commit and push safely</p>
+                        <p>✅ Read and understand history</p>
+                        <p style="margin-top: 1.5rem; font-size: 2rem; color: #667eea;">Start Here</p>
                     </div>
                 </div>
             </div>
@@ -577,25 +652,25 @@
     </footer>
 
     <script>
-        // Interactive Feature Toggle
+        // Interactive Learning Stage Toggle
         const toggleButtons = document.querySelectorAll('.toggle-btn');
         const featureDisplay = document.getElementById('featureDisplay');
 
         const features = {
-            premium: {
-                title: 'Premium Plan',
-                items: ['✅ Unlimited Projects', '✅ Advanced Analytics', '✅ Priority Support', '✅ Custom Branding'],
-                price: '$99/month'
+            beginner: {
+                title: 'Beginner Track',
+                items: ['✅ Git install and setup', '✅ Create your first repo', '✅ Commit and push safely', '✅ Read and understand history'],
+                price: 'Start Here'
             },
-            enterprise: {
-                title: 'Enterprise Plan',
-                items: ['✅ Unlimited Everything', '✅ Dedicated Account Manager', '✅ 24/7 Phone Support', '✅ White-label Solution', '✅ API Access'],
-                price: 'Custom Pricing'
+            collab: {
+                title: 'Collaboration Track',
+                items: ['✅ Pull requests', '✅ Code reviews', '✅ Team workflows', '✅ Issues and project boards'],
+                price: 'Work Together'
             },
-            custom: {
-                title: 'Custom Solution',
-                items: ['✅ Tailored to Your Needs', '✅ Scalable Infrastructure', '✅ Expert Consultation', '✅ Full Integration Support'],
-                price: 'Let\'s Talk'
+            advanced: {
+                title: 'Advanced Track',
+                items: ['✅ Branch strategies', '✅ CI/CD pipelines', '✅ Release management', '✅ Professional portfolio growth'],
+                price: 'Level Up'
             }
         };
 
@@ -621,6 +696,14 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 target?.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        const activeLinks = document.querySelectorAll('nav a');
+        activeLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                activeLinks.forEach(item => item.classList.remove('active-link'));
+                link.classList.add('active-link');
             });
         });
 
